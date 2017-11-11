@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraBlackEffect : MonoBehaviour, IScreamerObserver
+public class CameraBlackEffect : MonoBehaviour, IObserver
 {
-    public IScreamerObservable screamer;
+    public IObservable screamer;
     public Image blackScreen;
     public Image screamerImage;
     bool blackScreenOn;
@@ -43,14 +43,9 @@ public class CameraBlackEffect : MonoBehaviour, IScreamerObserver
 
     }
 
-
-    void IScreamerObserver.CameraBlackEffect()
+    public void Notify(GameObject _object)
     {
         SoundsManager.instancia.Play((int)SoundID.screamer, 1, false);
         blackScreenOn = true;
-
     }
-
-    
-
 }

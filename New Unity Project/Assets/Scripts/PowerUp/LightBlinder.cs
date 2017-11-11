@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightBlinder : MonoBehaviour, IObserver, IEnemyObservable
+public class LightBlinder : MonoBehaviour, IObserver, IObservable
 {
-    public List<IEnemyObserver> enemyObserversList= new List<IEnemyObserver>();
+    public List<IObserver> enemyObserversList= new List<IObserver>();
 
     public ManaManager manaManager;
     private IObservable consumeMana;
@@ -23,7 +23,7 @@ public class LightBlinder : MonoBehaviour, IObserver, IEnemyObservable
         manaManager = FindObjectOfType<ManaManager>();
     }
 
-    public void Suscribe(IEnemyObserver enemyObserver)
+    public void Suscribe(IObserver enemyObserver)
     {
         if (!enemyObserversList.Contains(enemyObserver))
         {
@@ -31,7 +31,7 @@ public class LightBlinder : MonoBehaviour, IObserver, IEnemyObservable
         }
     }
 
-    public void Unsuscribe(IEnemyObserver enemyObserver)
+    public void Unsuscribe(IObserver enemyObserver)
     {
 
         if (enemyObserversList.Contains(enemyObserver))
@@ -61,8 +61,7 @@ public class LightBlinder : MonoBehaviour, IObserver, IEnemyObservable
 
             for (int i = 0; i < enemyObserversList.Count; i++)
             {
-                enemyObserversList[i].RestEnemyLife();
-                enemyObserversList[i].RestAlphaEnemy();
+                enemyObserversList[i].Notify(gameObject);
             }
         }
         else

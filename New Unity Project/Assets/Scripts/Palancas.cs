@@ -51,7 +51,7 @@ public class Palancas : MonoBehaviour {
                 }
                 ObjectsCount.instance.getlever++;
             }
-            print(cursorTexture.name);
+
             Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
             lever.enabled = true;
         }

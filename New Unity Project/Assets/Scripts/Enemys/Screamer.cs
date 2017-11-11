@@ -3,34 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Screamer : MonoBehaviour, IScreamerObservable, ILifeObservable {
+public class Screamer : MonoBehaviour, IObservable {
 
 
-    List<IScreamerObserver> observersList = new List<IScreamerObserver>();
-    List<ILifeObserver> lifeObservers = new List<ILifeObserver>();
+    List<IObserver> screamerObserversList = new List<IObserver>();
 
-    public void Suscribe(ILifeObserver lifeObserver)
+    public void Suscribe(IObserver observer)
     {
-        lifeObservers.Add(lifeObserver);
+        screamerObserversList.Add(observer);
     }
-    public void Unsuscribe(ILifeObserver lifeObserver)
+    public void Unsuscribe(IObserver observer)
     {
-        if (lifeObservers.Contains(lifeObserver))
-        {
-            lifeObservers.Remove(lifeObserver);
-        }
-    }
-
-    public void Suscribe(IScreamerObserver screamerObserver)
-    {
-        observersList.Add(screamerObserver);
-    }
-
-
-    public void Unsuscribe(IScreamerObserver screamerObserver)
-    {
-        if (observersList.Contains(screamerObserver))
-        observersList.Remove(screamerObserver);
+        if (screamerObserversList.Contains(observer))
+            screamerObserversList.Remove(observer);
     }
 
 
@@ -38,14 +23,9 @@ public class Screamer : MonoBehaviour, IScreamerObservable, ILifeObservable {
     {
         if (c.gameObject.layer == 10)
         {
-            foreach (var item in observersList)
+            foreach (var item in screamerObserversList)
             {
-                item.CameraBlackEffect();
-            }
-
-            foreach (var item in lifeObservers)
-            {
-                item.TakeDamage();
+                item.Notify(gameObject);
             }
         }
 

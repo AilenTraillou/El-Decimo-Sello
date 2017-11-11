@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Character : MonoBehaviour, ILifeObservable {
+public class Character : MonoBehaviour, IObservable {
 
     public float speed;
     public Rigidbody rb;
     public Vector3 direction;
     public GameObject visual;
 
-    List<ILifeObserver> lifeObservers;
+    List<IObserver> lifeObservers;
 
-    //public float steerSpeed;
     public float jumpStr;
 
     public bool isJumping;
@@ -215,7 +214,6 @@ public class Character : MonoBehaviour, ILifeObservable {
             isJumping = false;
             
         }
-        //else isJumping = true;
 
         if (ground == 1)
         {
@@ -228,7 +226,7 @@ public class Character : MonoBehaviour, ILifeObservable {
         {
             foreach (var item in lifeObservers)
             {
-                item.TakeDamage();
+                item.Notify(gameObject);
             }
         }
 
@@ -255,56 +253,31 @@ public class Character : MonoBehaviour, ILifeObservable {
         isGrounded = false;
         ground = 0;
     }
-
-
-    //public void ReciveDamage(float damage)
-    //{
-    //    life.CurrentVal -= damage;
-
-    //    if (life.CurrentVal <= 0)
-    //    {
-    //        if (scene.name == "nivel1")
-    //        {
-    //            nivel = "nivel1";
-    //            analtycsstrei.NivelMuerte();
-                
-    //        }
-
-    //        if (scene.name == "nivel2")
-    //        {
-    //            nivel = "nivel2";
-    //            analtycsstrei.NivelMuerte();
-    //        }
-    //    }
-
-    
-        
-    //}
-
-    
+ 
 
     void RecoveryLife()
     {
         life.CurrentVal += 0.001f;
     }
 
-    public void Suscribe(ILifeObserver lifeObserver)
+    public void Suscribe(IObserver observer)
     {
         if (lifeObservers != null)
         {
-            lifeObservers.Add(lifeObserver);
+            lifeObservers.Add(observer);
 
-        }else
+        }
+        else
         {
-            lifeObservers = new List<ILifeObserver>();
+            lifeObservers = new List<IObserver>();
         }
     }
 
-    public void Unsuscribe(ILifeObserver lifeObserver)
+    public void Unsuscribe(IObserver observer)
     {
-        if (lifeObservers.Contains(lifeObserver))
+        if (lifeObservers.Contains(observer))
         {
-            lifeObservers.Remove(lifeObserver);
+            lifeObservers.Remove(observer);
         }
     }
 }

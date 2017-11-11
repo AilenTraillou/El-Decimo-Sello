@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Life : MonoBehaviour, ILifeObserver {
+public class Life : MonoBehaviour, IObserver {
 
     public Image lifeImage;
-    public ILifeObservable lifeObs;
-    public ILifeObservable screamerObs;
+    public IObservable lifeObs;
+    public IObservable screamerObs;
     float lifeValue = 100;
-    
-    public void TakeDamage()
-    {
-        print("dadadsad");
-        lifeValue -= 20;
-        MainPlayer.instance.AddFear(70f);
 
+    public void Notify(GameObject _object)
+    {
+        if (_object.GetComponent<Screamer>())
+        {
+            lifeValue -= 20;
+            MainPlayer.instance.AddFear(70f);
+        }
     }
 
     void Awake () {
@@ -29,8 +30,7 @@ public class Life : MonoBehaviour, ILifeObserver {
     }
 
     private void Update()
-    {
-        
+    {        
         lifeImage.fillAmount = lifeValue / 100;
     }
 }

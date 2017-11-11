@@ -10,17 +10,10 @@ public class LevelManager : MonoBehaviour {
     private float distance;
     private float range = 60;
 
-	void Start () {
-
-        
-       
-
-    }
 	
 	void Update () {
 
         distance = (character.transform.position - level.transform.position).magnitude;
-        //print(distance);
 
         if (distance < range)
         {
