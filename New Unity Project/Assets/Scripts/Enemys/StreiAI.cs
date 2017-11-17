@@ -7,15 +7,11 @@ public class StreiAI : MonoBehaviour {
     public Transform enemy;
     public Transform player;
 
-    private float _distance;
-    
+    private float _distance;  
     public float speed = 15f;
-
     public int _followRange = 50;
     public int _attackRange = 20;
-
     private bool _detected;
-
     private float _rotationSpeed = 5f;
 
 
@@ -32,13 +28,13 @@ public class StreiAI : MonoBehaviour {
         //    pointlight = GetComponent<Light>();
         //    pointlight.enabled = false;
         //}
-        enemy = this.transform;
+        enemy = transform;
         
     }
 
     void Update()
     {
-        var distance = (player.transform.position - enemy.transform.position).magnitude;
+        var distance = (player.transform.position - enemy.position).magnitude;
         _distance = distance;
 
 
@@ -52,7 +48,14 @@ public class StreiAI : MonoBehaviour {
         {
             FollowThePlayer();
         }
-
+        else
+        {
+            if (gameObject.name == "Monstruo Esqueleto 2")
+            {
+                GetComponent<Animation>().Stop("Run");
+                GetComponent<Animation>().Play("Idle");
+            }
+        }
 
     }
 
@@ -67,9 +70,14 @@ public class StreiAI : MonoBehaviour {
     public void FollowThePlayer()
     {
        
-
         if(_distance >= _attackRange)
         {
+            if (gameObject.name == "Monstruo Esqueleto 2")
+            {
+                GetComponent<Animation>().Stop("Idle");
+                GetComponent<Animation>().Play("Run");
+
+            }
             enemy.position += enemy.forward * speed * Time.deltaTime;
         }
 
@@ -89,7 +97,7 @@ public class StreiAI : MonoBehaviour {
     void Attack()
     {
 
-        if (this.gameObject.tag == "hiena")
+        if (gameObject.tag == "hiena")
         {
 
             //GameObject attack_effect = GameObject.Instantiate(particles);
@@ -97,7 +105,7 @@ public class StreiAI : MonoBehaviour {
             //attack_effect.transform.forward = this.transform.forward;
             //Character.instance.ReciveDamage(20f);
             MainPlayer.instance.AddFear(90f);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             
 
         }else
@@ -116,6 +124,15 @@ public class StreiAI : MonoBehaviour {
 
         }
 
+        if (gameObject.name == "Monstruo Esqueleto 2")
+            {
+                //GetComponent<Animation>().Stop();
+                GetComponent<Animation>().Play("Attack");
+
+            }
+           
         
+
+
     }
 }

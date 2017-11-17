@@ -8,7 +8,7 @@ public class Life : MonoBehaviour, IObserver {
 
     public Image lifeImage;
     public IObservable lifeObs;
-    public IObservable screamerObs;
+    public List<IObservable> screamerObs = new List<IObservable>();
     float lifeValue = 100;
 
     public void Notify(GameObject _object)
@@ -25,12 +25,24 @@ public class Life : MonoBehaviour, IObserver {
         lifeObs = FindObjectOfType<Character>();
         lifeObs.Suscribe(this);
 
-        screamerObs = FindObjectOfType<Screamer>();
-        screamerObs.Suscribe(this);
+        screamerObs.AddRange(FindObjectsOfType<Screamer>());
+
+        foreach (var item in screamerObs)
+        {
+            item.Suscribe(this);
+        }
     }
 
     private void Update()
-    {        
+    {
+
+        RecoveryLife();
         lifeImage.fillAmount = lifeValue / 100;
+
+    }
+
+    void RecoveryLife()
+    {
+        lifeValue += 0.001f;
     }
 }

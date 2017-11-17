@@ -11,7 +11,7 @@ public class StreiInspector : Editor {
         _target = (StreiAI)target;
     }
 
-    public override void OnInspectorGUI()
+    public void OnInspectorGUI()
     {
         ShowOriginalValues();
 

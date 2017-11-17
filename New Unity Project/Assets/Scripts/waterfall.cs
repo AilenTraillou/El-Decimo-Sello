@@ -30,7 +30,7 @@ public class waterfall : MonoBehaviour {
         {
             waterFloor1.transform.position += Vector3.down * Time.deltaTime * 1;
             waterFloor2.transform.position += Vector3.down * Time.deltaTime * 1;
-            if (wall.transform.position.y <= -23)
+            if (wall.transform.position.y <= -15)
             {
                 wall.transform.position += Vector3.up * Time.deltaTime * 2;
             }

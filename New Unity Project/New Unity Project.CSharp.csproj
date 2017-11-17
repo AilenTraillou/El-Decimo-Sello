@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -81,17 +84,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AmbientMusicManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraBlackEffect.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraWalkAnimation.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowMouse.cs" />
     <Compile Include="Assets\Scripts\Camera\MarcoSangre.cs" />
-    <Compile Include="Assets\Scripts\Chains.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\FirstPersonArm.cs" />
+    <Compile Include="Assets\Scripts\Character\JumpAdvance.cs" />
     <Compile Include="Assets\Scripts\Character\MainPlayer.cs" />
-    <Compile Include="Assets\Scripts\CloseDoor.cs" />
-    <Compile Include="Assets\Scripts\CompuertaAutomatica.cs" />
+    <Compile Include="Assets\Scripts\Character\RunAdvance.cs" />
+    <Compile Include="Assets\Scripts\Character\WalkAdvance.cs" />
     <Compile Include="Assets\Scripts\Editors Scripts\BabosaAnimationInspector.cs" />
     <Compile Include="Assets\Scripts\Editors Scripts\CharacterInspector.cs" />
     <Compile Include="Assets\Scripts\Editors Scripts\InspectorFloor.cs" />
@@ -101,35 +103,40 @@
     <Compile Include="Assets\Scripts\Editors Scripts\StreiInspector.cs" />
     <Compile Include="Assets\Scripts\Editors Scripts\TexturesEditor.cs" />
     <Compile Include="Assets\Scripts\Enemys\Acuatico1.cs" />
-    <Compile Include="Assets\Scripts\Enemys\Babosa.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyLife.cs" />
     <Compile Include="Assets\Scripts\Enemys\Screamer.cs" />
+    <Compile Include="Assets\Scripts\Enemys\SkeletonMonster.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Slug.cs" />
     <Compile Include="Assets\Scripts\Enemys\StreiAI.cs" />
     <Compile Include="Assets\Scripts\Enemys\phbabosa.cs" />
     <Compile Include="Assets\Scripts\Farol.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\CompuertaAutomatica.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\Door.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\InteractionCursor.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\Key.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\Lever.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\ObjectsCount.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\PowerUp\ConsumeMana.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\PowerUp\LightBlinder.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\PowerUp\ManaManager.cs" />
+    <Compile Include="Assets\Scripts\Interactuable Objects\PowerUp\PowerUpLight.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IAdvance.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IObservable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IObserver.cs" />
-    <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\LuzTitila.cs" />
     <Compile Include="Assets\Scripts\MessegeDictionary.cs" />
-    <Compile Include="Assets\Scripts\Monstruo_esqueleto.cs" />
-    <Compile Include="Assets\Scripts\NewDoor.cs" />
-    <Compile Include="Assets\Scripts\NewKey.cs" />
-    <Compile Include="Assets\Scripts\ObjectsCount.cs" />
-    <Compile Include="Assets\Scripts\Palancas.cs" />
     <Compile Include="Assets\Scripts\ParticleCollision.cs" />
-    <Compile Include="Assets\Scripts\PowerUp\ConsumeMana.cs" />
-    <Compile Include="Assets\Scripts\PowerUp\LightBlinder.cs" />
-    <Compile Include="Assets\Scripts\PowerUp\ManaManager.cs" />
-    <Compile Include="Assets\Scripts\PowerUp\PowerUpLight.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
-    <Compile Include="Assets\Scripts\SoundsManager.cs" />
+    <Compile Include="Assets\Scripts\Sounds\AmbientMusicManager.cs" />
+    <Compile Include="Assets\Scripts\Sounds\CardiacPulse.cs" />
+    <Compile Include="Assets\Scripts\Sounds\Chains.cs" />
+    <Compile Include="Assets\Scripts\Sounds\SoundsManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CustomCursor.cs" />
     <Compile Include="Assets\Scripts\UI\Life.cs" />
     <Compile Include="Assets\Scripts\UI\LifeBar.cs" />
     <Compile Include="Assets\Scripts\UI\MessegeController.cs" />
     <Compile Include="Assets\Scripts\UI\Stat.cs" />
-    <Compile Include="Assets\Scripts\Water.cs" />
     <Compile Include="Assets\Scripts\analtycsstrei.cs" />
     <Compile Include="Assets\Scripts\propaganda.cs" />
     <Compile Include="Assets\Scripts\waterfall.cs" />
